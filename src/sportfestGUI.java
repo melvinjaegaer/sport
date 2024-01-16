@@ -1,3 +1,5 @@
+import com.sun.jdi.DoubleValue;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +10,8 @@ public class sportfestGUI {
     private JButton hinzuB;
     private JPanel gfhfgtzhjnthn;
     private JTextArea textArea1;
-    Schüler schüler;
+    private JTextField textzeit;
+    Schüler pSchüler;
 
     List<Schüler> teilnehmerlist;
    
@@ -18,32 +21,25 @@ public class sportfestGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 teilnehmerlist = new List<Schüler>();
-                schüler  = new Schüler ();
-                if(teilnehmerlist.isEmpty()){
+                pSchüler  = new Schüler();
+                    if(teilnehmerlist.isEmpty()){
+                        Schüler Schüler = new Schüler(textN.getText(), textNN.getText(), Double.valueOf(textzeit.getText()));
+                            teilnehmerlist.append(pSchüler);
 
-     if(!textN.getText().equals(null)&&!textNN.getText().equals(null))  {
-         teilnehmerlist.append(schüler);
-         textN.setText("");
-         textNN.setText("");
+                            teilnehmerlist.toFirst();
+                            textArea1.setText(textN.getText()+" "+ textNN.getText()+" "+textzeit.getText());
+                            textN.setText("");
+                            textNN.setText("");
+                            textzeit.setText("");
 
 
 
-     }
              
               
 
 
             }
 
-
-                if(!textN.getText().equals(null)&&!textNN.getText().equals(null))  {
-                    teilnehmerlist.append(schüler);
-                    textN.setText("");
-                    textNN.setText("");
-
-
-
-                    }
 
 
 

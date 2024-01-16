@@ -1,24 +1,17 @@
 public class Schüler {
 
-
-
     public class schüler {
+        String vorname;
+        String nachname;
+        double zeit;
 
-
-        String vorname = "";
-        String nachname = "";
-
-
-        schüler(String pvorname, String pnachname) {
-
-            vorname = pvorname;
-            nachname = pnachname;
+        schüler(String pvorname, String pnachmane, double pzeit){
+            vorname=pvorname;
+            nachname=pnachmane;
+            zeit=pzeit;
 
 
         }
-
-
-
         public String getVorname() {
             return vorname;
         }
@@ -26,20 +19,9 @@ public class Schüler {
         public String getNachname() {
             return nachname;
         }
-
-
-
-        public void setVorname(String pVorname) {
-            vorname = pVorname;
+        public double getZeit() {
+            return zeit;
         }
+    }
 
-        public void setNachname(String pNachname) {
-            nachname = pNachname;
-        }
-
-
-
-
-
-
-    }}
+   }
