@@ -1,11 +1,11 @@
-public class Schüler {
 
-    public class schüler {
+
+    public class Schüler {
         String vorname;
         String nachname;
         double zeit;
 
-        schüler(String pvorname, String pnachmane, double pzeit){
+        Schüler(String pvorname, String pnachmane, double pzeit){
             vorname=pvorname;
             nachname=pnachmane;
             zeit=pzeit;
@@ -24,4 +24,4 @@ public class Schüler {
         }
     }
 
-   }
+

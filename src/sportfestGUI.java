@@ -1,44 +1,82 @@
-import com.sun.jdi.DoubleValue;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class sportfestGUI {
+    Schüler pSchüler;
+    List<Schüler> teilnehmerlist;
     private JTextField textN;
     private JTextField textNN;
     private JButton hinzuB;
     private JPanel gfhfgtzhjnthn;
     private JTextArea textArea1;
     private JTextField textzeit;
-    Schüler pSchüler;
-
-    List<Schüler> teilnehmerlist;
+    private JButton ausgebenB;
    
 
     public sportfestGUI() {
+        teilnehmerlist = new List<Schüler>();
         hinzuB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                teilnehmerlist = new List<Schüler>();
-                pSchüler  = new Schüler();
-                    if(teilnehmerlist.isEmpty()){
-                        Schüler Schüler = new Schüler(textN.getText(), textNN.getText(), Double.valueOf(textzeit.getText()));
-                            teilnehmerlist.append(pSchüler);
 
-                            teilnehmerlist.toFirst();
-                            textArea1.setText(textN.getText()+" "+ textNN.getText()+" "+textzeit.getText());
-                            textN.setText("");
-                            textNN.setText("");
-                            textzeit.setText("");
+                if(teilnehmerlist.isEmpty()){
+
+                    Schüler pSchüler = new Schüler(textN.getText(), textNN.getText(), Double.valueOf(textzeit.getText()));
+                    teilnehmerlist.append(pSchüler);
+
+                    teilnehmerlist.toFirst();
+
+                    textN.setText("");
+                    textNN.setText("");
+                    textzeit.setText("");
+                    textArea1.setText(pSchüler.getVorname()+pSchüler.getNachname());
+                } else
+                {
+                    Schüler pSchüler = new Schüler(textN.getText(), textNN.getText(), Double.valueOf(textzeit.getText()));
+                    teilnehmerlist.toFirst();
+                    while (teilnehmerlist.hasAccess() && pSchüler.getZeit() > teilnehmerlist.getContent().getZeit()) {
+
+                        teilnehmerlist.next();
+
+
+                    }
+                    if (teilnehmerlist.hasAccess()) {
+                        teilnehmerlist.insert(pSchüler);
+
+                    } else {
+                        teilnehmerlist.append(pSchüler);
+
+
+                    }
+
+                    textN.setText("");
+                    textNN.setText("");
+                    textzeit.setText("");
+                    textArea1.setText(pSchüler.getVorname()+pSchüler.getNachname());
 
 
 
-             
-              
 
 
+                }
+
+
+
+            }}
+        );
+
+
+        ausgebenB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                teilnehmerlist.toFirst();
+                while(teilnehmerlist.hasAccess()){
+                    System.out.println(teilnehmerlist.getContent().getVorname()+", "+teilnehmerlist.getContent().getNachname()+", "+teilnehmerlist.getContent().getZeit() );
+                    teilnehmerlist.next();
             }
+        };
 
 
 
@@ -51,7 +89,9 @@ public class sportfestGUI {
 
 
 
-            }
+
+
+
         });
     }
 
